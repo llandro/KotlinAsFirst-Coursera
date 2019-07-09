@@ -1,7 +1,7 @@
 @file:Suppress("UNUSED_PARAMETER")
 package lesson3.task1
 
-import kotlin.math.sqrt
+import kotlin.math.*
 
 /**
  * Пример
@@ -82,7 +82,14 @@ fun fib(n: Int): Int = TODO()
  * Для заданных чисел m и n найти наименьшее общее кратное, то есть,
  * минимальное число k, которое делится и на m и на n без остатка
  */
-fun lcm(m: Int, n: Int): Int = TODO()
+fun lcm(m: Int, n: Int): Int {
+    for (i in max(m,n)..m*n) {
+        if (i%m ==0 && i % n == 0) {
+            return i
+        }
+    }
+    return m * n
+}
 
 /**
  * Простая
@@ -159,7 +166,17 @@ fun cos(x: Double, eps: Double): Double = TODO()
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun revert(n: Int): Int = TODO()
+fun revert(n: Int): Int {
+
+    var reverted = 0
+    var to_revert = n
+    while(to_revert != 0) {
+        reverted = reverted * 10 + to_revert % 10
+        to_revert = to_revert / 10
+    }
+    return reverted
+
+ }
 
 /**
  * Средняя
@@ -170,7 +187,7 @@ fun revert(n: Int): Int = TODO()
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun isPalindrome(n: Int): Boolean = TODO()
+fun isPalindrome(n: Int): Boolean = (n == revert(n))
 
 /**
  * Средняя
