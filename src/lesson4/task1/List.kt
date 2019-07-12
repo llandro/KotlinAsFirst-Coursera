@@ -239,4 +239,117 @@ fun roman(n: Int): String = TODO()
  * Например, 375 = "триста семьдесят пять",
  * 23964 = "двадцать три тысячи девятьсот шестьдесят четыре"
  */
-fun russian(n: Int): String = TODO()
+fun russian(n: Int): String {
+    if (n == 0) return "ноль"
+    var result = ""
+    val thousands = n / 1000
+    val belowThousand = n % 1000
+    //первая половина
+    result = result + when(thousands / 100){
+        0 -> ""
+        1 -> "сто "
+        2 -> "двести "
+        3 -> "триста "
+        4 -> "четыреста "
+        5 -> "пятьсот "
+        6 -> "шестьсот "
+        7 -> "семьсот "
+        8 -> "восемьсот "
+        9 -> "девятьсот "
+        else -> ""
+    } +
+     when (thousands / 10 % 10) {
+        2 -> "двадцать "
+        3 -> "тридцать "
+        4 -> "сорок "
+        5 -> "пятьдесят "
+        6 -> "шестьдесят "
+        7 -> "семьдесят "
+        8 -> "восемьдесят "
+        9 -> "девяносто "
+        else -> ""
+        } +
+     when (thousands %10) {
+        0 -> if(thousands /10 % 10 == 1) "десять "
+            else ""
+        1 -> if(thousands /10 % 10 == 1) "одиннадцать "
+            else "одна "
+        2 -> if(thousands /10 % 10 == 1) "двенадцать "
+            else "две "
+        3 -> if(thousands /10 % 10 == 1) "тринадцать "
+            else "три "
+        4 -> if(thousands /10 % 10 == 1) "четырнадцать "
+            else "четыре "
+        5 -> if(thousands /10 % 10 == 1) "пятнадцать "
+            else "пять "
+        6 -> if(thousands /10 % 10 == 1) "шестнадцать "
+            else "шесть "
+        7 -> if(thousands /10 % 10 == 1) "семнадцать "
+            else "семь "
+        8 -> if(thousands /10 % 10 == 1) "восемнадцать "
+            else "восемь "
+        9 -> if(thousands /10 % 10 == 1) "девятнадцать "
+            else "девять "
+        else -> ""
+    }+
+     (if (thousands == 0 ) ""
+        else when(thousands %10){
+        1-> if (thousands /10%10 ==1 ) "тысяч "
+            else "тысяча "
+        2,3,4 -> if (thousands /10%10 ==1 ) "тысяч "
+            else "тысячи "
+        else -> "тысяч "
+
+        }) +
+
+     when(belowThousand / 100){
+        0 -> ""
+        1 -> "сто "
+        2 -> "двести "
+        3 -> "триста "
+        4 -> "четыреста "
+        5 -> "пятьсот "
+        6 -> "шестьсот "
+        7 -> "семьсот "
+        8 -> "восемьсот "
+        9 -> "девятьсот "
+        else -> ""
+    } +
+     when (belowThousand / 10 % 10) {
+        2 -> "двадцать "
+        3 -> "тридцать "
+        4 -> "сорок "
+        5 -> "пятьдесят "
+        6 -> "шестьдесят "
+        7 -> "семьдесят "
+        8 -> "восемьдесят "
+        9 -> "девяносто "
+        else -> ""
+    } +
+     when (belowThousand %10) {
+        0 -> if(belowThousand /10 % 10 == 1) "десять "
+        else ""
+        1 -> if(belowThousand /10 % 10 == 1) "одиннадцать "
+        else "один "
+        2 -> if(belowThousand /10 % 10 == 1) "двенадцать "
+        else "два "
+        3 -> if(belowThousand /10 % 10 == 1) "тринадцать "
+        else "три "
+        4 -> if(belowThousand /10 % 10 == 1) "четырнадцать "
+        else "четыре "
+        5 -> if(belowThousand /10 % 10 == 1) "пятнадцать "
+        else "пять "
+        6 -> if(belowThousand /10 % 10 == 1) "шестнадцать "
+        else "шесть "
+        7 -> if(belowThousand /10 % 10 == 1) "семнадцать "
+        else "семь "
+        8 -> if(belowThousand /10 % 10 == 1) "восемнадцать "
+        else "восемь "
+        9 -> if(belowThousand /10 % 10 == 1) "девятнадцать "
+        else "девять "
+        else -> ""
+    }
+    result = result.trim()
+
+    return result
+}
